@@ -1,16 +1,81 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { HeroesListComponent } from './heroes-list/heroes-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormListComponent } from './form-list/form-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { HomeComponent } from './home/home.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CrisisListComponent,
+    HeroesListComponent,
+    FormListComponent,
+    PageNotFoundComponent,
+    HomeComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FlexLayoutModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    SnotifyModule,
+    MatIconModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    MatSelectModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+    InMemoryDataService, { dataEncapsulation: false }
+    ),
+    RouterModule.forRoot([
+      {path: 'crisis-list', component: CrisisListComponent},
+      {path: 'heroes-list', component: HeroesListComponent},
+      {path: 'form-list',   component: FormListComponent},
+      {path: 'home', component: HomeComponent},
+      {path: '', redirectTo: '/crisis-list', pathMatch: 'full'},
+      {path: '**',          component: PageNotFoundComponent},
+      
+      
+    ]),
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

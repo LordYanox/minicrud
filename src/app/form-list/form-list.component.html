@@ -1,0 +1,48 @@
+<!-- <div *ngIf="data.id != undefined ; else block">
+        <h3>Udate datos</h3
+     </div>
+     <ng-template #block>
+      <h3>crear datos</h3>
+    </ng-template> -->
+
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div *ngIf="data.id != undefined ; else block">
+      <h3>Actualizar datos</h3> 
+    </div>
+
+    <ng-template #block>
+      <h3>Crear datos </h3> 
+    </ng-template>
+
+      <form [formGroup]="myGroup" (submit)="enviar_datos()">
+        <mat-form-field  fxLayout="column" fxLayoutAlign="center center">
+          <input type="text" matInput placeholder="id"  formControlName="id" >
+        </mat-form-field>
+
+            <mat-form-field  fxLayout="column" fxLayoutAlign="center center">
+              <input type="text" matInput placeholder="Nombre completo"  formControlName="nombre">
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column" fxLayoutAlign="center center">
+              <input type="number" matInput placeholder="Cedula" formControlName="cedula">
+            </mat-form-field>
+
+            <mat-form-field fxLayout="column" fxLayoutAlign="center center">
+              <mat-select placeholder="Ciudad" formControlName="ciudad">
+                <mat-option value="1">Barranquilla</mat-option>
+                <mat-option value="2">Bogota</mat-option>
+                <mat-option value="3">Medellin</mat-option>
+              </mat-select>
+        </mat-form-field>
+        <br>
+      <div fxLayout="row" fxLayoutAlign="space-between end">
+        <button mat-raised-button color="primary" type="submit" > {{ data.id != undefined ? 'Actualizar' : 'Crear'}}  </button>
+        <button mat-raised-button color="warn" type="button" (click)="BotonClose()" >Cerrar</button>
+      </div>
+      <div>{{datos}}</div>
+    </form>
+
+
+  </div>
+  
+
