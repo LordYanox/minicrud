@@ -14,10 +14,10 @@
       <h3>Crear datos </h3> 
     </ng-template>
 
-      <form [formGroup]="myGroup" (submit)="enviar_datos()">
-        <mat-form-field  fxLayout="column" fxLayoutAlign="center center">
+      <form [formGroup]="myGroup" (submit)="enviar_datos(test)">
+<!--         <mat-form-field  fxLayout="column" fxLayoutAlign="center center">
           <input type="text" matInput placeholder="id"  formControlName="id" >
-        </mat-form-field>
+        </mat-form-field> -->
 
             <mat-form-field  fxLayout="column" fxLayoutAlign="center center">
               <input type="text" matInput placeholder="Nombre completo"  formControlName="nombre">
@@ -29,11 +29,11 @@
 
             <mat-form-field fxLayout="column" fxLayoutAlign="center center">
               <mat-select placeholder="Ciudad" formControlName="ciudad">
-                <mat-option value="1">Barranquilla</mat-option>
-                <mat-option value="2">Bogota</mat-option>
-                <mat-option value="3">Medellin</mat-option>
+                <mat-option value="Barranquilla" >Barranquilla</mat-option>
+                <mat-option value="Bogota" >Bogota</mat-option>
+                <mat-option value="Medellin" >Medellin</mat-option>
               </mat-select>
-        </mat-form-field>
+            </mat-form-field>
         <br>
       <div fxLayout="row" fxLayoutAlign="space-between end">
         <button mat-raised-button color="primary" type="submit" > {{ data.id != undefined ? 'Actualizar' : 'Crear'}}  </button>

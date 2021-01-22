@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { Tabla } from './tabla';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Icommonresponse } from './icommonresponse';
 
 
@@ -9,21 +10,20 @@ import { Icommonresponse } from './icommonresponse';
   providedIn: 'root'
 })
 export class PersonaService {
-
 private urlAPI = 'api/usuarios';
  
 constructor(private http: HttpClient) { }
 
     getPersonas(): Observable<Tabla[]> {
-      return this.http.get<Tabla[]>(this.urlAPI)
+      return this.http.get<Tabla[]>(this.urlAPI);
     }
     addPersona(persona: Tabla): Observable<Tabla> {
-      return this.http.post<Tabla>(this.urlAPI, persona)
+      return this.http.post<Tabla>(this.urlAPI, persona);
     }
     updatePersona(persona: Tabla):Observable<Tabla> {
-      return this.http.put<Tabla>(this.urlAPI, persona)
+      return this.http.put<Tabla>(this.urlAPI, persona);
     }
-    deletePersona(id: string): Observable<{}>{
+    deletePersona(id: number): Observable<{}>{
       this.urlAPI = `${this.urlAPI}/${id}`;
       return this.http.delete(this.urlAPI);
     }

@@ -16,7 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,7 +25,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { HomeComponent } from './home/home.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { InterceptorService } from './services/interceptor.service';
+import { SidebarModule } from 'ng-sidebar';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
 
 
 
@@ -37,16 +44,21 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     FormListComponent,
     PageNotFoundComponent,
     HomeComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatPaginatorModule,
     MatMenuModule,
+    NgxPaginationModule,
     MatProgressBarModule,
     MatDialogModule,
     SnotifyModule,
+    NgxSpinnerModule,
+    SidebarModule,
     MatIconModule,
     MatTableModule,
     MatProgressSpinnerModule,
@@ -58,8 +70,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatSnackBarModule,
     MatButtonToggleModule,
     MatFormFieldModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-    InMemoryDataService, { dataEncapsulation: false }
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { 
+      dataEncapsulation: false, put204:false }
     ),
     RouterModule.forRoot([
       {path: 'crisis-list', component: CrisisListComponent},
@@ -74,6 +86,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true},
     SnotifyService
   ],
   bootstrap: [AppComponent]

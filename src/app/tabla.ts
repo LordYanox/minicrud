@@ -1,5 +1,5 @@
 export interface Tabla {
-    id ?: string;
+    id ?: number;
     nombre: string;
     cedula: number;
     ciudad: string;

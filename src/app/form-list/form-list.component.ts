@@ -30,7 +30,7 @@ export class FormListComponent implements OnInit {
 }
 
   ngOnInit() {
-    console.log("DATOS" , this.data.ciudad);
+
   }
   enviar_datos(){
   const datos = this.myGroup.value;
