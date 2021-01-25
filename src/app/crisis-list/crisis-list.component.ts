@@ -22,7 +22,9 @@ import { Tabla } from '../tabla';
   export class CrisisListComponent implements OnInit {
   title = 'TABLA';
   displayedColumns: string[] = ['id', 'nombre', 'cedula', 'ciudad', 'opciones'];
+  filterPost = '';
   datos: Tabla[];
+  pageActual: number = 1;
 /*   dataSource = new MatTableDataSource<Tabla>(usuarios); */
 
 /*   @ViewChild(MatPaginator, {static: true}) paginator:
@@ -32,6 +34,7 @@ import { Tabla } from '../tabla';
     private apiService:PersonaService,
     public dialog: MatDialog,
     private spinnerService: SpinnerService,
+    
     private snotifyService: SnotifyService
   ) {}
 

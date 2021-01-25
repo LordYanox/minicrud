@@ -28,10 +28,14 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { InterceptorService } from './services/interceptor.service';
 import { SidebarModule } from 'ng-sidebar';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FooterComponent } from './components/footer/footer.component';
+
+
 
 
 
@@ -45,6 +49,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     PageNotFoundComponent,
     HomeComponent,
     SidebarComponent,
+    FilterPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
