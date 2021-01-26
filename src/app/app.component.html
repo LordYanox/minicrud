@@ -1,19 +1,9 @@
-<br>
-<nav>
-<div fxLayoutAlign="center center">
-  <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-    <mat-button-toggle routerLink="/home"  value="underline">Home</mat-button-toggle>
-    <mat-button-toggle routerLink="/crisis-list"  value="bold">Tabla</mat-button-toggle>
-
-
-  </mat-button-toggle-group>
-</div>
 
 <!-- <div *ngif="loaderService.isLoading | async" class="loader-container">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div> -->
-
-
+<app-root-nav>
 <router-outlet></router-outlet>
+</app-root-nav>
 <ng-snotify></ng-snotify>
 <app-footer></app-footer>

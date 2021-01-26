@@ -31,9 +31,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { InterceptorService } from './services/interceptor.service';
 import { SidebarModule } from 'ng-sidebar';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { RootNavComponent } from './root-nav/root-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -48,9 +52,9 @@ import { FooterComponent } from './components/footer/footer.component';
     FormListComponent,
     PageNotFoundComponent,
     HomeComponent,
-    SidebarComponent,
     FilterPipe,
-    FooterComponent
+    FooterComponent,
+    RootNavComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +93,10 @@ import { FooterComponent } from './components/footer/footer.component';
       
       
     ]),
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
